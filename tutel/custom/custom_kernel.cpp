@@ -91,7 +91,7 @@ static std::string nvcc_compile(const char* code, const std::string &arch) {
   file_write(code_path, code);
   std::string fatbin_path = code_path + std::string(".fatbin");
 #if !defined(__HIP_PLATFORM_HCC__)
-  const char *entry = "/usr/local/cuda/bin/nvcc";
+  const char *entry = "/usr/local/cuda-11.3/bin/nvcc";
 #else
   const char *entry = "/opt/rocm/bin/hipcc";
 #endif
@@ -118,7 +118,7 @@ static std::string nvcc_compile(const char* code, const std::string &arch) {
 static std::string nvrtc_compile(const char* code, const std::string &arch) {
 #if !defined(__HIP_PLATFORM_HCC__)
   std::string arch_option = "--gpu-architecture=compute_" + arch;
-  std::vector<const char*> param_cstrings = {"--restrict", "--include-path=/usr/local/cuda/include", arch_option.c_str(), "--use_fast_math", "--extra-device-vectorization"};
+  std::vector<const char*> param_cstrings = {"--restrict", "--include-path=/usr/local/cuda-11.3/include", arch_option.c_str(), "--use_fast_math", "--extra-device-vectorization"};
 #else
   std::string arch_option = "--gpu-architecture=" + arch;
   std::vector<const char*> param_cstrings = {arch_option.c_str(), "-O4"};

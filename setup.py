@@ -111,7 +111,7 @@ def install(use_cuda, use_nccl):
             extension('tutel_custom_kernel', [
                 './tutel/custom/custom_kernel.cpp',
             ],
-            library_dirs=['/usr/local/cuda/lib64/stubs'],
+            library_dirs=['/usr/local/cuda-11.3/lib64/stubs'],
             libraries=ext_libs,
             extra_compile_args=ext_args)
         ],
